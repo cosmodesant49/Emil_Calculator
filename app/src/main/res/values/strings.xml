@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">Emil_Calculator</string>
+    <string name="app_name">Emil_calculator</string>
+    <string-array name="spinner_items">
+        <item>Type 1</item>
+        <item>Type 2</item>
+        <item>Type 3</item>
+    </string-array>
 </resources>

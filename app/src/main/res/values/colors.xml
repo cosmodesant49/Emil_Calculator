@@ -5,4 +5,9 @@
     <color name="orange">#FFA007</color>
     <color name="light_grey">#A6A6A6</color>
     <color name="dark_grey">#333333</color>
+    <color name="background_color">#28323B</color>
+    <color name="red">#DD366A</color>
+    <color name="blue">#4687F0</color>
+    <color name="green_gradient">#50F441</color>
+    <color name="red_gradient">#A25901</color>
 </resources>

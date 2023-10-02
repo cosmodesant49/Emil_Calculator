@@ -2,7 +2,9 @@ package com.geeks.emil_calculator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -14,11 +16,13 @@ public class MainActivity extends AppCompatActivity {
     private Boolean isOperationClick;
     private String operation;
 
+    public static final String KEY1 = "key1";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textView = findViewById(R.id.text_view);
+
     }
 
     private void testText(String t){
@@ -26,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onNumberClick(View view) {
+        Button invisibleButton = findViewById(R.id.invisibleButton);
+        invisibleButton.setVisibility(View.INVISIBLE);
+
         //проверка на показ числа с кнопки и склейка
         if (view.getId() == R.id.btn_clear) {
             textView.setText("0");
@@ -43,7 +50,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onOperationClick(View view) {
+        Button invisibleButton = findViewById(R.id.invisibleButton);
+        invisibleButton.setVisibility(View.INVISIBLE);
+
+
         if (view.getId() == R.id.btn_plus) {
+
             first = Integer.valueOf(textView.getText().toString());
             isOperationClick = true;
             operation = "+";
@@ -61,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
             operation = "/";
         } else if (view.getId() == R.id.btn_equal) {
             second = Integer.valueOf(textView.getText().toString());
+            invisibleButton.setVisibility(View.VISIBLE);
             Integer result = 0;
 
             if (operation.equals("+")) {
@@ -80,6 +93,15 @@ public class MainActivity extends AppCompatActivity {
 
             textView.setText(result.toString());
             isOperationClick = false;
+        }
+    }
+
+    public void onButtonClick(View view) {
+        if (view.getId() == R.id.invisibleButton) {
+            Intent intent = new Intent(MainActivity.this,PriceCardActivity.class);
+            intent.putExtra(MainActivity.KEY1, textView.getText().toString());
+            startActivity(intent);
+
         }
     }
 }
